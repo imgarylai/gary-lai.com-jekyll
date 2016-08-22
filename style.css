@@ -1,0 +1,68 @@
+body{
+	font-family: 'Roboto', 'Open-Sans', sans-serif;
+}
+
+footer{
+	background-color:#0431B4;
+	color: #ddd;
+	padding: 10px;
+	text-align:left;
+	margin-top:20px;
+}
+
+.navbar-main{
+	background-color: #0431B4;
+}
+
+.navbar-brand{
+	padding:0;
+	width:150px;
+}
+
+.navbar-nav li a{
+	color:white!important;
+}
+
+.navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
+    background-color: #A4A4A4;
+    color: #FFC0CB;
+}
+
+.navbar-nav .active a{
+	background-color:#A4A4A4!important;
+}
+
+.navbar-default {
+    background-color: white!important;
+    border-color: white!important;
+}
+
+/* navbar size modification - used to double height of navbar */
+
+.navbar-fixed-top {
+    min-height: 100px;
+}
+
+.navbar-nav > li > a {
+    padding-top: 0px;
+    padding-bottom: 0px;
+    line-height: 100px;
+}
+
+@media (max-width: 767px) {
+    .navbar-nav > li > a {
+    line-height: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;}
+    .navbar-brand .navbar-logo-img{
+    	padding:8px;
+    }
+}
+
+@media (max-width: 976px) {
+    .navbar-brand .navbar-logo-img{
+    	width:300px!important;
+    }
+}
+
+/* end of avbar size modification */
