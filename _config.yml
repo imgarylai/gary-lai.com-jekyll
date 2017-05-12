@@ -21,7 +21,7 @@ exclude:
   - Gemfile.lock
   - README.md
 
-ga_analytics: # Add Google Analytics tracking code
+ga_analytics: UA-78238484-1
 
 gems:
   - jekyll-assets
