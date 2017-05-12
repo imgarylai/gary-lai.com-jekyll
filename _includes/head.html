@@ -28,8 +28,12 @@
 
   <link rel="apple-touch-icon" href="{{ site.url }}{% asset_path apple-touch-icon.png %}">
 
-  <script
-  src="//d2wy8f7a9ursnm.cloudfront.net/bugsnag-3.min.js"
-  data-apikey="0685f84096c6b3669dee5be3fda88c23"></script>
+  {% if site.ga_analytics %}
+    <script>
+      window.ga=function(){ga.q.push(arguments)};ga.q=[];ga.l=+new Date;
+      ga('create','{{ site.ga_analytics }}','auto');ga('send','pageview')
+    </script>
+    <script src="https://www.google-analytics.com/analytics.js" async defer></script>
+  {% endif %}
 
 </head>
