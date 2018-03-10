@@ -1,5 +1,15 @@
-<script type="text/javascript" src="{{ site.url }}{% asset_path vendor.js %}"></script>
-<script type="text/javascript" src="{{ site.url }}{% asset_path application.js %}"></script>
+{% if site.ga_analytics %}
+  <script async src="https://www.googletagmanager.com/gtag/js?id={{site.ga_analytics}}"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', '{{site.ga_analytics}}');
+  </script>
+{% endif %}
+
+{% asset vendor.js %}
+{% asset application.js %}
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.4.0/highlight.min.js"></script>
 <script type="text/javascript" src="https://cdn.rawgit.com/imgarylai/text/f9d39d54/assets/js/highlightjs-line-numbers.min.js" ></script>
 <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/Han/3.3.0/han.min.js"></script>
