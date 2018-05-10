@@ -14,7 +14,7 @@ jobs:
           keys:
             - node-modules-{{checksum "package.json"}}
             - node-modules-
-      - run: sudo sh ./bin/setup
+      - run: sh ./bin/setup
       - save_cache:
           key: gems-{{checksum "Gemfile.lock"}}
           paths:
@@ -31,7 +31,7 @@ jobs:
     working_directory: ~/app
     steps:
       - checkout 
-      - run: sudo sh ./bin/automated
+      - run: sh ./bin/automated
 
 workflows:
   version: 2
