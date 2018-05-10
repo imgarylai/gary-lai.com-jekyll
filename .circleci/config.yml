@@ -3,35 +3,57 @@ jobs:
   build:
     docker:
       - image: circleci/ruby:2.5.0-node
+        environment:
+          USER_NAME: imgarylai
+          USER_EMAIL: garylai1990@gmail.com
     working_directory: ~/app
     steps:
       - checkout
+      # Which version of bundler?
+      - run:
+          name: Which bundler?
+          command: bundle -v   
+      # Restore bundle cache   
       - restore_cache:
           keys:
             - gems-{{checksum "Gemfile.lock"}}
             - gems- 
-      - restore_cache:
-          keys:
-            - node-modules-{{checksum "package.json"}}
-            - node-modules-
-      - run: sh ./bin/setup
+      - run:
+          name: Bundle Install
+          command: bundle check || bundle install  
+      # Store bundle cache    
       - save_cache:
           key: gems-{{checksum "Gemfile.lock"}}
           paths:
             - vendor/bundle
+
+      # Only necessary if app uses webpacker or yarn in some other way
+      - restore_cache:
+          keys:
+            - yarn-{{checksum "yarn.lock"}}
+            - yarn-
+      - run:
+          name: Yarn Install
+          command: yarn install --modules-folder ./_assets/yarn --cache-folder ~/.cache/yarn
+      
+      # Store yarn / webpacker cache
       - save_cache:
-          key: node-modules-{{checksum "package.json"}}
+          key: yarn-{{checksum "yarn.lock"}}
           paths:
-            - node_modules
-      - run: bundle exec jekyll build
-      - run: bundle exec htmlproofer ./_site --only-4xx --allow-hash-href
+            - ~/.cache/yarn
+      
+      - type: shell
+          command: bundle exec jekyll build
+      - type: shell 
+          command: bundle exec htmlproofer ./_site --only-4xx --allow-hash-href
+
   deploy:
     machine:
       enabled: true
     working_directory: ~/app
     steps:
       - checkout 
-      - run: sh ./bin/automated
+      - run: ./bin/automated
 
 workflows:
   version: 2
