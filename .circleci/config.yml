@@ -3,29 +3,42 @@ jobs:
   build:
     docker:
       - image: circleci/ruby:2.5.0-node
+    working_directory: ~/app
     steps:
       - checkout
-      - run:
-          name: pre
-          command: sudo sh ./bin/setup
-  test:
-    docker:
-      - image: circleci/ruby:2.5.0-node
+      - restore_cache:
+        keys:
+          - gems-{{checksum "Gemfile.lock"}}
+          - gems- 
+      - restore_cache:
+        keys:
+          - node-modules-{{checksum "package.json"}}
+          - node-modules-
+      - run: sudo sh ./bin/setup
+      - save_cache:
+          key: gems-{{checksum "Gemfile.lock"}}
+          paths:
+            - vendor/bundle
+      - save_cache:
+          key: node-modules-{{checksum "package.json"}}
+          paths:
+            - node_modules
+      - run: bundle exec jekyll build
+      - run: bundle exec htmlproofer ./_site --only-4xx --allow-hash-href
+  deploy:
+    machine:
+      enabled: true
+    working_directory: ~/app
     steps:
-      - checkout
-      - run:
-          name: build
-          command: bundle exec jekyll build
-      - run:
-          name: htmlproofer
-          command: bundle exec htmlproofer ./_site --only-4xx --allow-hash-href
+      - checkout 
+      - run: sudo sh ./bin/automated
 
 workflows:
   version: 2
-  build_and_test:
+  build_and_deploy:
     jobs:
       - build
-      - test:
+      - deploy:
           requires:
             - build
           filters:
