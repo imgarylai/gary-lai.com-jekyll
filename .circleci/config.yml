@@ -2,8 +2,7 @@ version: 2
 jobs:
   build:
     docker:
-      - image: circleci/ruby:2.5.0
-      - image: circleci/node:8.11.1
+      - image: circleci/ruby:2.5.0-node
     steps:
       - checkout
       - run:
@@ -11,8 +10,7 @@ jobs:
           command: sh ./bin/setup
   test:
     docker:
-      - image: circleci/ruby:2.5.0
-      - image: circleci/node:8.11.1
+      - image: circleci/ruby:2.5.0-node
     steps:
       - checkout
       - run:
