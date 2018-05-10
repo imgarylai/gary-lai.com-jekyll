@@ -17,6 +17,7 @@ exclude:
   - package.json
   - README.md
   - yarn.lock
+  - vendor
 
 ga_analytics: UA-78238484-1
 
