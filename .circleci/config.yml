@@ -9,11 +9,9 @@ jobs:
     working_directory: ~/app
     steps:
       - checkout
-      # Which version of bundler?
       - run:
           name: Which bundler?
           command: bundle -v   
-      # Restore bundle cache   
       - restore_cache:
           keys:
             - gems-{{checksum "Gemfile.lock"}}
@@ -21,13 +19,10 @@ jobs:
       - run:
           name: Bundle Install
           command: bundle check || bundle install  
-      # Store bundle cache    
       - save_cache:
           key: gems-{{checksum "Gemfile.lock"}}
           paths:
             - vendor/bundle
-
-      # Only necessary if app uses webpacker or yarn in some other way
       - restore_cache:
           keys:
             - yarn-{{checksum "yarn.lock"}}
@@ -35,17 +30,14 @@ jobs:
       - run:
           name: Yarn Install
           command: yarn install --modules-folder ./_assets/yarn --cache-folder ~/.cache/yarn
-      
-      # Store yarn / webpacker cache
       - save_cache:
           key: yarn-{{checksum "yarn.lock"}}
           paths:
             - ~/.cache/yarn
-      
       - type: shell
-          command: bundle exec jekyll build
+        command: bundle exec jekyll build
       - type: shell 
-          command: bundle exec htmlproofer ./_site --only-4xx --allow-hash-href
+        command: bundle exec htmlproofer ./_site --only-4xx --allow-hash-href
 
   deploy:
     machine:
@@ -65,4 +57,4 @@ workflows:
             - build
           filters:
             branches:
-              only: master
+              only: masterci 
