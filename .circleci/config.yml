@@ -6,19 +6,19 @@ jobs:
       - image: circleci/node:8.11.1
     steps:
       - run:
-        name: pre
-        command: "./bin/setup"
+          name: pre
+          command: "./bin/setup"
   test:
     docker:
       - image: circleci/ruby:2.5.0
       - image: circleci/node:8.11.1
     steps:
       - run:
-        name: build
-        command: bundle exec jekyll build
+          name: build
+          command: bundle exec jekyll build
       - run:
-        name: htmlproofer
-        command: bundle exec htmlproofer ./_site --only-4xx --allow-hash-href
+          name: htmlproofer
+          command: bundle exec htmlproofer ./_site --only-4xx --allow-hash-href
 
 workflows:
   version: 2
