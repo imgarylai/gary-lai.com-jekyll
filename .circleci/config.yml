@@ -5,6 +5,7 @@ jobs:
       - image: circleci/ruby:2.5.0
       - image: circleci/node:8.11.1
     steps:
+      - checkout
       - run:
           name: pre
           command: sh ./bin/setup
@@ -13,6 +14,7 @@ jobs:
       - image: circleci/ruby:2.5.0
       - image: circleci/node:8.11.1
     steps:
+      - checkout
       - run:
           name: build
           command: bundle exec jekyll build
