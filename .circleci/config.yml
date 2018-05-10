@@ -7,7 +7,7 @@ jobs:
       - checkout
       - run:
           name: pre
-          command: sh ./bin/setup
+          command: sudo sh ./bin/setup
   test:
     docker:
       - image: circleci/ruby:2.5.0-node
