@@ -38,23 +38,11 @@ jobs:
         command: bundle exec jekyll build
       - type: shell 
         command: bundle exec htmlproofer ./_site --only-4xx --allow-hash-href
-
-  deploy:
-    machine:
-      enabled: true
-    working_directory: ~/app
-    steps:
-      - checkout 
-      - run: ./bin/automated
+      - type: shell 
+        command: ./bin/automated
 
 workflows:
   version: 2
   build_and_deploy:
     jobs:
       - build
-      - deploy:
-          requires:
-            - build
-          filters:
-            branches:
-              only: master
