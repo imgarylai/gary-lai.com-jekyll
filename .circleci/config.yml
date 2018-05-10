@@ -7,13 +7,13 @@ jobs:
     steps:
       - checkout
       - restore_cache:
-        keys:
-          - gems-{{checksum "Gemfile.lock"}}
-          - gems- 
+          keys:
+            - gems-{{checksum "Gemfile.lock"}}
+            - gems- 
       - restore_cache:
-        keys:
-          - node-modules-{{checksum "package.json"}}
-          - node-modules-
+          keys:
+            - node-modules-{{checksum "package.json"}}
+            - node-modules-
       - run: sudo sh ./bin/setup
       - save_cache:
           key: gems-{{checksum "Gemfile.lock"}}
