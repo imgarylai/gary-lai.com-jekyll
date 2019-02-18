@@ -1,0 +1,17 @@
+<header class="center">
+  <div class="blog-title">
+    <a href="https://gary-lai.com">Gary Lai</a>
+  </div>
+  <div class="blog-description">Natural 😜 Processing</div>
+  <nav>
+    {% for item in site.navigation %}
+        {% assign class = nil %}
+        {% if page.url == item.url %}
+            {% assign class = 'nav-current' %}
+        {% endif %}
+        <a href="{{ item.url }}" class="nav-list {{ class }}">
+          {{ item.title }}
+        </a>
+    {% endfor %}
+  </nav>
+</header>

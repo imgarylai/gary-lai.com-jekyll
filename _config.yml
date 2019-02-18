@@ -30,3 +30,9 @@ name: Gary Lai
 permalink: pretty
 
 url: https://gary-lai.com
+
+navigation:
+  - title: About
+    url: /
+  - title: Blog
+    url: https://blog.gary-lai.com
