@@ -32,7 +32,33 @@ permalink: pretty
 url: https://gary-lai.com
 
 navigation:
-  - title: About
-    url: /
+  - title: Projects
+    url: /projects
   - title: Blog
     url: https://blog.gary-lai.com
+
+projects:
+  - title: bert-embedding
+    description: 🔡 Token level embeddings from BERT model on mxnet and gluonnlp
+    url: https://github.com/imgarylai/bert-embedding
+    github_user: imgarylai
+    github_repo: bert-embedding
+  - title: elit
+    description: 🔠 Evolution of Language and Information Technology
+    url: https://github.com/elitcloud/elit
+    github_user: elitcloud
+    github_repo: elit
+  - title: text
+    description: 👻 An elegant ghost blogging theme. Mandarin optimization support.
+    url: https://github.com/imgarylai/text
+    github_user: imgarylai
+    github_repo: text
+  - title: StickerHD
+    description: 🖨 StickerHD is the highest quality customized online sticker manufacturer with flexible order amount from 5 pics to thousands and more.
+    url: https://stickerhd.com/
+  - title: active_merchant_pay2go
+    description: 💵 Unified API to integrate Ruby on Rails with Pay2go(智付寶) offsite payment.
+    url: https://github.com/imgarylai/active_merchant_pay2go
+    github_user: imgarylai
+    github_repo: active_merchant_pay2go
+

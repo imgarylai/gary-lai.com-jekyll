@@ -1,0 +1,27 @@
+--- 
+layout: default 
+title: "Projects | Gary Lai 👾👾👾" 
+description: "Projects launched by Gary Lai" 
+---
+
+<h1>Projects</h1>
+<div class="projects">
+{% for project in site.projects %}
+  <h4> 
+    {% if project.github_user %}
+      <a class="github-button" 
+      href="https://github.com/{{project.github_user}}/{{project.github_repo}}" 
+      data-icon="octicon-star" 
+      data-size="small" 
+      data-show-count="true" 
+      aria-label="Star {{project.github_user}}/{{project.github_repo}} on GitHub">
+      Star</a>
+    {% endif %}
+    <a href="{{ project.url }}" target="_blank">{{ project.title }}</a>
+
+  </h4>
+  <p>
+    {{ project.description }}
+  </p>
+{% endfor %}
+</div>
