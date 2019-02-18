@@ -3,7 +3,7 @@ machine:
     USER_NAME: imgarylai
     USER_EMAIL: garylai1990@gmail.com
   ruby:
-    version: 2.4.1
+    version: 2.5.0
   node:
     version: 8.2.1
 
