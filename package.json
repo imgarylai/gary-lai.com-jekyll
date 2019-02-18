@@ -1,7 +1,0 @@
-{
-  "name": "gary-lai.com",
-  "dependencies": {
-    "jquery": "^3.2.1",
-    "normalize.css": "^8.0.1"
-  }
-}
